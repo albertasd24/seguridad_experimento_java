@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    <!-- Agregar CSS común -->
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav>
+        <ul>
+            <li><a th:href="">Inicio</a></li>
+            <li><a th:href="">Acerca de</a></li>
+            <!-- Otros elementos de navegación -->
+        </ul>
+    </nav>
+
+    <!-- Contenido de la página -->
+    <div th:replace="~{fragments/sidebar :: sidebar-content}"></div>
+
+    <!-- Pie de página -->
+    <footer>
+        <h1>Sistema de Información</h1>
+    </footer>
+
+</body>
+</html>
