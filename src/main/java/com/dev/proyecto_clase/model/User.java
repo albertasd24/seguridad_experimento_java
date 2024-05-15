@@ -1,46 +1,33 @@
 package com.dev.proyecto_clase.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table
+@Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {
 
-    @Id()
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name = "username")
-    private String username;
-    @Column(name = "password")
-    private String password;
 
-    @ManyToMany
-    @JoinTable(
-        name = "user_role",
-        joinColumns = @JoinColumn(name = "user_id"),
-        inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
-    private Set<Role> roles = new HashSet<>();
+    private String email;
+    private String password;
+    private String role;
+    private String fullName;
 
     public User() {
     }
 
-    public User(Long id, String username, String password, Set<Role> roles) {
-        this.id = id;
-        this.username = username;
+    public User(String email, String password, String role, String fullName) {
+        this.email = email;
         this.password = password;
-        this.roles = roles;
+        this.role = role;
+        this.fullName = fullName;
     }
 
     public Long getId() {
@@ -51,12 +38,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -67,12 +54,22 @@ public class User {
         this.password = password;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public String getRole() {
+        return role;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRole(String role) {
+        this.role = role;
     }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    
 
 }

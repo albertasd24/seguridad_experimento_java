@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <main>
+        <div th:if="${param.error}">
+            Invalid Username or Password
+        </div>
+        <div th:if="${param.logout}">
+           Logout Successfuly
+        </div>
+        <form th:action="@{/login}" method="post">
+            <h1>Iniciar Sesión</h1>
+            <label for="">Correo</label>
+            <input type="text" name="username">
+            <label for="">Password</label>
+            <input type="password" name="password">
+            <button type="submit">Ingresar</button>
+        </form>
+    </main>
+</body>
+</html>
